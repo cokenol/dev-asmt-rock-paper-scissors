@@ -1,3 +1,4 @@
+# imports methods from state.rb file
 require_relative 'state'
 
 # Objective

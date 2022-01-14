@@ -1,25 +1,16 @@
-require "black_jack"
+require 'game'
 
-describe "#pick_bank_score" do
-  it "should return a number" do
-    expect(pick_bank_score).to be_a Numeric
+describe "#random_choice" do
+  it "should return a choice as string" do
+    expect(random_choice).to be_a String
   end
 
-  it "should give a number between 16 and 21" do
-    scores = []
-    100.times do
-      score = pick_bank_score
-      scores << score if (16..21).include?(score)
-    end
-
-    expect(scores.size).to eq(100)
+  it "should return either rock paper or scissors" do
+    actual = random_choice
+    expected = ""
+    expect(actual).to eq (expected)
   end
 end
-
-
-# Don’t know the game? ​h​ttps://en.wikipedia.org/wiki/Rock​paper​scissors​
-
-
 
 # Technical constraints:
 # ● The solution should be easily runnable from the command line.
