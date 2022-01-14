@@ -6,9 +6,7 @@ describe "#random_choice" do
   end
 
   it "should return either rock paper or scissors" do
-    actual = random_choice
-    expected = ""
-    expect(actual).to eq (expected)
+    expect(%w[rock paper scissors]).to include (random_choice)
   end
 end
 
