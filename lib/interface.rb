@@ -15,15 +15,15 @@ def choose_mode
     # I should be able to play Computer vs Computer.
     puts '2. PC vs PC'
     puts '3. Exit'
-    puts '=========================================='
-    puts 'Please choose 1 or 2'
+    puts 'Please choose 1, 2 or 3'
     choice = gets.chomp
     return choice.to_i if %w[1 2 3].include?(choice)
   end
 end
 
 def player_choose
-  puts '======================'
+  puts '========================'
+  puts 'Rock, paper or scissors?'
   puts '1. Rock'
   puts '2. Paper'
   puts '3. Scissors'

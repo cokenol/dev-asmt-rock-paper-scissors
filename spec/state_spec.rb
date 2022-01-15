@@ -12,7 +12,7 @@ describe '#state_of_the_game' do
 end
 
 describe '#end_of_the_game' do
-  it 'should return a choice as string' do
+  it 'should return as string' do
     expect(end_of_the_game('rock', 'paper', 1)).to be_a String
   end
 
