@@ -28,12 +28,10 @@ def end_of_the_game(player_one_choice, player_two_choice, mode)
 end
 
 def choice_emoji(choice)
-  case choice
-  when 'rock'
-    'rock ✊'
-  when 'paper'
-    'paper ✋'
-  when 'scissors'
-    'scissors ✂'
-  end
+  emoji = {
+    rock: 'rock ✊',
+    paper: 'paper ✋',
+    scissors: 'scissors ✂'
+  }
+  emoji[choice.to_sym]
 end
