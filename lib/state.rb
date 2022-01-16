@@ -11,7 +11,7 @@ def state_of_the_game(player_one_choice, player_two_choice, mode)
     player_one = 'PC#1 choice'
     player_two = 'PC#2 choice'
   end
-  "#{player_one} is #{player_one_choice}, #{player_two} is #{player_two_choice}"
+  "#{player_one} is #{choice_emoji(player_one_choice)}.\n#{player_two} is #{choice_emoji(player_two_choice)}."
 end
 
 def end_of_the_game(player_one_choice, player_two_choice, mode)
@@ -25,4 +25,15 @@ def end_of_the_game(player_one_choice, player_two_choice, mode)
   end
   result = Result::HASH[player_one_choice.to_sym][player_two_choice.to_sym]
   "#{player_one} #{result}!"
+end
+
+def choice_emoji(choice)
+  case choice
+  when 'rock'
+    'rock ✊'
+  when 'paper'
+    'paper ✋'
+  when 'scissors'
+    'scissors ✂'
+  end
 end
