@@ -117,10 +117,10 @@ This is take home coding assignment to build a command line game for rock, paper
 <!-- Execution Instructions -->
 ## Execution Instructions
 #### Test
-1. ``` rspec ``` in the terminal to run the tests written and its results
+  ``` rspec ``` in the terminal to run the tests written and its results
 
 #### Run the game
-1. ```ruby lib/interface.rb``` in the terminal to start the command line game
+  ```ruby lib/interface.rb``` in the terminal to start the command line game
 
 
 
