@@ -4,6 +4,7 @@ require_relative 'state'
 # imports methods from game.rb file
 require_relative 'game'
 
+# Method to prompt user to choose modes
 def choose_mode
   continue = true
   while continue
@@ -14,12 +15,13 @@ def choose_mode
     # I should be able to play Computer vs Computer.
     puts '2. PC vs PC'
     puts '3. Exit'
-    puts 'Please choose 1, 2 or 3'
+    puts 'Input 1, 2 or 3'
     choice = gets.chomp
     return choice.to_i if %w[1 2 3].include?(choice)
   end
 end
 
+# Method to prompt user to choose rock, paper or scissors to play in Player vs PC
 def player_choose
   clear
   puts '========================'
@@ -33,6 +35,7 @@ def player_choose
   %w[rock paper scissors][choice]
 end
 
+# Method to clear terminal
 def clear
   print `clear`
 end
