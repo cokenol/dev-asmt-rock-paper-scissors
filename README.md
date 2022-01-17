@@ -11,10 +11,16 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
+    <li>
+      <a href="#execution-instructions">Execution Instructions</a>
+      <ul>
+        <li><a href="#test">Test</a></li>
+        <li><a href="#run-the-game">Run the game</a></li>
+      </ul>
+    </li>    
   </ol>
 </details>
 
