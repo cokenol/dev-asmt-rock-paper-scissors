@@ -27,7 +27,7 @@ end
 def display_choices(choices)
   clear
   puts '========================'
-  puts 'Rock, paper or scissors?'
+  puts 'Please choose one.'
   choices.each_with_index do |choice, index|
     puts "#{index + 1} #{choice}"
   end
