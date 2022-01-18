@@ -7,7 +7,6 @@ require_relative 'game'
 # imports methods from results.rb file
 require_relative 'results'
 
-
 result = Result.new
 state = State.new
 # Method to prompt user to choose modes
@@ -79,7 +78,7 @@ while continue
 
   # Prints the choices and result of the game.
   puts state.state_of_the_game(player_one_choice, player_two_choice, mode)
-  puts state.end_of_the_game(player_one_choice, player_two_choice, mode)
+  puts state.end_of_the_game(player_one_choice, player_two_choice, mode, result)
 
   # Prompts users to choose mode again after the game is done.
   mode = choose_mode

@@ -1,10 +1,6 @@
 require_relative 'game'
-require_relative 'results'
-class State
-  def initialize
-    @result = Result.new
-  end
 
+class State
   def choice_emoji(choice)
     emoji = {
       rock: 'rock ✊',
@@ -32,7 +28,7 @@ class State
     "#{player_one} is #{choice_emoji(player_one_choice)}.\n#{player_two} is #{choice_emoji(player_two_choice)}."
   end
 
-  def end_of_the_game(player_one_choice, player_two_choice, mode)
+  def end_of_the_game(player_one_choice, player_two_choice, mode, result)
     # return a message telling if player 1 or 2 won.
     # return a message containing player 1's and player 2's states.
     case mode
@@ -41,6 +37,6 @@ class State
     when 2
       player_one = 'PC#1'
     end
-    "#{player_one} #{@result.outcome(player_one_choice, player_two_choice)}!"
+    "#{player_one} #{result.outcome(player_one_choice, player_two_choice)}!"
   end
 end
