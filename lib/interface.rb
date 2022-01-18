@@ -4,6 +4,12 @@ require_relative 'state'
 # imports methods from game.rb file
 require_relative 'game'
 
+# imports methods from results.rb file
+require_relative 'results'
+
+
+result = Result.new
+state = State.new
 # Method to prompt user to choose modes
 def choose_mode
   continue = true
@@ -29,9 +35,9 @@ def display_choices(choices)
   choices.each_with_index do |choice, index|
     puts "#{index + 1} #{choice}"
   end
+  print 'Input '
   choices.count.times do |time|
-    print 'Input '
-    print choices.count == time ? "or #{time}" : "#{time}, "
+    print choices.count == (time + 1) ? "or #{time + 1}" : "#{time + 1}, "
   end
 end
 
@@ -60,7 +66,7 @@ clear
 # Loop to prompt user to choose a mode until 1 or 2 is not chosen
 while continue
   # When 1. Player vs PC is chosen. Prompt user to choose rock, paper or scissors.
-  choices = Result::HASH.keys
+  choices = result.rule_set.keys
   display_choices(choices)
   player_one_choice = player_choose(choices) if mode == 1
 
@@ -72,8 +78,8 @@ while continue
   player_two_choice = random_choice
 
   # Prints the choices and result of the game.
-  puts state_of_the_game(player_one_choice, player_two_choice, mode)
-  puts end_of_the_game(player_one_choice, player_two_choice, mode)
+  puts state.state_of_the_game(player_one_choice, player_two_choice, mode)
+  puts state.end_of_the_game(player_one_choice, player_two_choice, mode)
 
   # Prompts users to choose mode again after the game is done.
   mode = choose_mode
