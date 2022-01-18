@@ -4,7 +4,9 @@ class State
     emoji = {
       rock: 'rock ✊',
       paper: 'paper ✋',
-      scissors: 'scissors ✂'
+      scissors: 'scissors ✂',
+      lizard: 'lizard 🦎',
+      spock: 'spock 🖖'
     }
     emoji[choice.to_sym]
   end
