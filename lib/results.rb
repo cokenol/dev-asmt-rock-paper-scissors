@@ -18,12 +18,12 @@ module Result
   }
 end
 # Scissors cuts Paper
-# Paper covers Rock
-# Rock crushes Lizard
-# Lizard poisons Spock
-# Spock smashes Scissors
 # Scissors decapitates Lizard
-# Lizard eats Paper
+# Paper covers Rock
 # Paper disproves Spock
-# Spock vaporizes Rock
+# Rock crushes Lizard
 # Rock crushes Scissors
+# Lizard poisons Spock
+# Lizard eats Paper
+# Spock smashes Scissors
+# Spock vaporizes Rock
