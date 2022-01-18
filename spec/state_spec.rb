@@ -32,7 +32,7 @@ describe "State", if: state_helper.file_and_class_valid? do
       expect(state.end_of_the_game('rock', 'paper', 1, result)).to be_a String
     end
 
-    it 'should return the correct outcome' do
+    it 'should return the correct outcome for rock, paper, scissors' do
       expect(state.end_of_the_game('rock', 'paper', 1, result)).to match(/You lost!/i)
       expect(state.end_of_the_game('rock', 'scissors', 1, result)).to match(/You win!/i)
       expect(state.end_of_the_game('rock', 'rock', 1, result)).to match(/Draw/i)
@@ -42,6 +42,16 @@ describe "State", if: state_helper.file_and_class_valid? do
       expect(state.end_of_the_game('scissors', 'rock', 1, result)).to match(/You lost!/i)
       expect(state.end_of_the_game('scissors', 'paper', 1, result)).to match(/You win!/i)
       expect(state.end_of_the_game('scissors', 'scissors', 1, result)).to match(/Draw/i)
+    end
+
+    it 'should return the correct outcome for rock, paper, scissors, lizard, spock' do
+      expect(state.end_of_the_game('rock', 'lizard', 1, result)).to match(/You win!/i)
+      expect(state.end_of_the_game('scissors', 'rock', 1, result)).to match(/You lost!/i)
+      expect(state.end_of_the_game('paper', 'spock', 1, result)).to match(/You win!/i)
+      expect(state.end_of_the_game('lizard', 'scissors', 1, result)).to match(/You lost!/i)
+      expect(state.end_of_the_game('lizard', 'spock', 1, result)).to match(/You win!/i)
+      expect(state.end_of_the_game('scissors', 'spock', 1, result)).to match(/You lost!/i)
+      expect(state.end_of_the_game('spock', 'rock', 1, result)).to match(/You win!/i)
     end
   end
 end
