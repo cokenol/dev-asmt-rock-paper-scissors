@@ -1,6 +1,5 @@
-require_relative 'game'
-
 class State
+  # Inputs a choice and return a string with the choice and corresponding emoji
   def choice_emoji(choice)
     emoji = {
       rock: 'rock ✊',
@@ -10,9 +9,9 @@ class State
     emoji[choice.to_sym]
   end
 
-  def random_choice
+  def random_choice(result)
     # Return a random choice of rock, paper or scissors
-    @result.rule_set.keys.sample.to_s
+    result.sample.to_s
   end
 
   def state_of_the_game(player_one_choice, player_two_choice, mode)
@@ -30,7 +29,6 @@ class State
 
   def end_of_the_game(player_one_choice, player_two_choice, mode, result)
     # return a message telling if player 1 or 2 won.
-    # return a message containing player 1's and player 2's states.
     case mode
     when 1
       player_one = 'You'
