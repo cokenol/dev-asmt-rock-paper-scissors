@@ -1,11 +1,8 @@
 # imports methods from state.rb file
 require_relative 'state'
 
-# imports methods from game.rb file
-require_relative 'game'
-
-# imports methods from results.rb file
-require_relative 'results'
+# imports methods from result.rb file
+require_relative 'result'
 
 result = Result.new
 state = State.new
@@ -70,11 +67,11 @@ while continue
   player_one_choice = player_choose(choices) if mode == 1
 
   # When 2. PC vs PC is chosen. Player one choice is randomly chosen.
-  player_one_choice = random_choice if mode == 2
+  player_one_choice = state.random_choice(choices) if mode == 2
   clear
 
   # Player two is default PC so the choice is always random.
-  player_two_choice = random_choice
+  player_two_choice = state.random_choice(choices)
 
   # Prints the choices and result of the game.
   puts state.state_of_the_game(player_one_choice, player_two_choice, mode)
