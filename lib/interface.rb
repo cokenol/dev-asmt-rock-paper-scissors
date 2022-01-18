@@ -21,18 +21,25 @@ def choose_mode
   end
 end
 
-# Method to prompt user to choose rock, paper or scissors to play in Player vs PC
-def player_choose
+# Method to display available choices when playing in Player vs PC
+def display_choices(choices)
   clear
   puts '========================'
   puts 'Rock, paper or scissors?'
-  puts '1. Rock'
-  puts '2. Paper'
-  puts '3. Scissors'
-  puts 'Type 1, 2 or 3'
+  choices.each_with_index do |choice, index|
+    puts "#{index + 1} #{choice}"
+  end
+  choices.count.times do |time|
+    print 'Input '
+    print choices.count == time ? "or #{time}" : "#{time}, "
+  end
+end
+
+# Method to prompt user to input a choice after displaying availables choices
+def player_choose(choices)
   choice = gets.chomp.to_i - 1
   clear
-  %w[rock paper scissors][choice]
+  choices[choice]
 end
 
 # Method to clear terminal
@@ -53,7 +60,9 @@ clear
 # Loop to prompt user to choose a mode until 1 or 2 is not chosen
 while continue
   # When 1. Player vs PC is chosen. Prompt user to choose rock, paper or scissors.
-  player_one_choice = player_choose if mode == 1
+  choices = Result::HASH.keys
+  display_choices(choices)
+  player_one_choice = player_choose(choices) if mode == 1
 
   # When 2. PC vs PC is chosen. Player one choice is randomly chosen.
   player_one_choice = random_choice if mode == 2
