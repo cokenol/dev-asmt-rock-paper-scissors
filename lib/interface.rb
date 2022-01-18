@@ -8,8 +8,7 @@ result = Result.new
 state = State.new
 # Method to prompt user to choose modes
 def choose_mode
-  continue = true
-  while continue
+  while true
     puts '=========================================='
     puts 'Modes:'
     # I should be able to play Player vs Computer.
@@ -20,6 +19,10 @@ def choose_mode
     puts 'Input 1, 2 or 3'
     choice = gets.chomp
     return choice.to_i if %w[1 2 3].include?(choice)
+
+    # If input other 1, 2, or 3 is given, clears screen, outputs error msg, and loops.
+    clear
+    puts "Error: input #{choice} was entered. \nPlease try again."
   end
 end
 
@@ -54,13 +57,13 @@ clear
 
 # First user prompt to choose a mode.
 mode = choose_mode
-continue = [1, 2].include?(mode)
+loop_game = [1, 2].include?(mode)
 
 # Clear terminal after mode is chosen
 clear
 
 # Loop to prompt user to choose a mode until 1 or 2 is not chosen
-while continue
+while loop_game
   # When 1. Player vs PC is chosen. Prompt user to choose rock, paper or scissors.
   choices = result.rule_set.keys
   display_choices(choices)
@@ -79,7 +82,9 @@ while continue
 
   # Prompts users to choose mode again after the game is done.
   mode = choose_mode
-  continue = [1, 2].include?(mode)
+
+  # Loops the game if 1 or 2 is chosen. Other inputs will exit the game.
+  loop_game = [1, 2].include?(mode)
 end
 
 puts 'Exiting game. Bye. See you again.'
