@@ -1,9 +1,11 @@
 class Result
   def rule_set
     {
-      rock: [:scissors],
-      paper: [:rock],
-      scissors: [:paper]
+      rock: %i[scissors lizard],
+      paper: %i[rock spock],
+      scissors: %i[paper lizard],
+      lizard: %i[spock paper],
+      spock: %i[scissors rock]
     }
   end
 
