@@ -10,7 +10,7 @@ class State
   end
 
   def random_choice(result)
-    # Return a random choice of rock, paper or scissors
+    # Return a random choice of from given input of arrays
     result.sample.to_s
   end
 
