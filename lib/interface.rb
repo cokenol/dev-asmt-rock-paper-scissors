@@ -4,8 +4,10 @@ require_relative 'state'
 # imports methods from game.rb file
 require_relative 'game'
 
+# Instantiaing a game and state instance
 game = Game.new
 state = State.new
+
 # Method to prompt user to choose modes
 def choose_mode
   choice = nil
@@ -56,7 +58,7 @@ end
 # Clear terminal once ruby interface.rb is run
 clear
 
-# First user prompt to choose a mode.
+# First user prompt to choose a mode
 mode = choose_mode
 loop_game = [1, 2].include?(mode)
 
@@ -77,7 +79,7 @@ while loop_game
   # Player two is default PC so the choice is always random.
   player_two_choice = state.random_choice(choices)
 
-  # Prints the choices and game of the game.
+  # Prints the choices chosen and result of the game.
   puts state.state_of_the_game(player_one_choice, player_two_choice, mode, game)
   puts state.end_of_the_game(player_one_choice, player_two_choice, mode, game)
 

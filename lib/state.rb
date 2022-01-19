@@ -17,7 +17,7 @@ class State
     "#{player_one} is #{game.choice_emoji(player_one_choice)}.\n#{player_two} is #{game.choice_emoji(player_two_choice)}."
   end
 
-  # Return a message telling if player 1 or 2 won.
+  # Return a message telling if player 1 has won, draw or lost.
   def end_of_the_game(player_one_choice, player_two_choice, mode, result)
     case mode
     when 1
