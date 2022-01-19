@@ -3,7 +3,7 @@ require_relative "helper/file_helper.rb"
 begin
   require 'state'
   require 'game'
-  rescue LoadError
+rescue LoadError
 end
 
 state_helper = FileHelper.new(
@@ -11,7 +11,7 @@ state_helper = FileHelper.new(
   class_name: 'State'
 )
 
-describe "State", if: state_helper.file_and_class_valid? do
+RSpec.describe "State", if: state_helper.file_and_class_valid? do
 
   let(:state) { State.new }
   let(:game) { Game.new }
