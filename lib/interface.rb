@@ -1,10 +1,10 @@
 # imports methods from state.rb file
 require_relative 'state'
 
-# imports methods from result.rb file
-require_relative 'result'
+# imports methods from game.rb file
+require_relative 'game'
 
-result = Result.new
+game = Game.new
 state = State.new
 # Method to prompt user to choose modes
 def choose_mode
@@ -63,10 +63,10 @@ loop_game = [1, 2].include?(mode)
 # Clear terminal after mode is chosen
 clear
 
-# Loop to prompt user to choose a mode until 1 or 2 is not chosen
+# Loop to prompt user to choose a mode
 while loop_game
   # When 1. Player vs PC is chosen. Prompt user to choose rock, paper or scissors.
-  choices = result.rule_set.keys
+  choices = game.rule_set.keys
   display_choices(choices)
   player_one_choice = player_choose(choices) if mode == 1
 
@@ -77,9 +77,9 @@ while loop_game
   # Player two is default PC so the choice is always random.
   player_two_choice = state.random_choice(choices)
 
-  # Prints the choices and result of the game.
-  puts state.state_of_the_game(player_one_choice, player_two_choice, mode)
-  puts state.end_of_the_game(player_one_choice, player_two_choice, mode, result)
+  # Prints the choices and game of the game.
+  puts state.state_of_the_game(player_one_choice, player_two_choice, mode, game)
+  puts state.end_of_the_game(player_one_choice, player_two_choice, mode, game)
 
   # Prompts users to choose mode again after the game is done.
   mode = choose_mode

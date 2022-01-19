@@ -1,4 +1,6 @@
-class Result
+# Ruleset and outcome methods are defined here
+class Game
+  # Rule set of the game is defined here
   def rule_set
     {
       rock: %i[scissors lizard],
@@ -9,6 +11,19 @@ class Result
     }
   end
 
+  # Inputs a choice and return a string with the choice and corresponding emoji
+  def choice_emoji(choice)
+    emoji = {
+      rock: '✊',
+      paper: '✋',
+      scissors: '✂',
+      lizard: '🦎',
+      spock: '🖖'
+    }
+    "#{choice} #{emoji[choice.to_sym]}"
+  end
+
+  # Returns the outcome of the game here when givne player one and two choices.
   def outcome(player_one_choice, player_two_choice)
     if player_one_choice == player_two_choice
       'draw'
