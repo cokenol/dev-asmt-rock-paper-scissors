@@ -1,11 +1,11 @@
 require 'interface'
 
-RSpec.describe ConsoleInterface do
+RSpec.describe Interface do
 
   describe '#choose_mode' do
     it 'sends a prompt question to output' do
       output = StringIO.new
-      console_interface = ConsoleInterface.new(output: output)
+      console_interface = Interface.new(output: output)
 
       console_interface.choose_mode
 

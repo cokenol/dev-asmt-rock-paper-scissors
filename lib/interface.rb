@@ -55,8 +55,8 @@ class Interface
 
   # Method to clear terminal
   def clear
-    # print `clear`
-    system('clear') || system('cls')
+    print `clear`
+    # system('clear') || system('cls')
   end
 
   # Run game method
