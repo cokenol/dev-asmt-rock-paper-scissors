@@ -8,7 +8,8 @@ result = Result.new
 state = State.new
 # Method to prompt user to choose modes
 def choose_mode
-  while true
+  choice = nil
+  until %w[1 2 3].include?(choice)
     puts '=========================================='
     puts 'Modes:'
     # I should be able to play Player vs Computer.
