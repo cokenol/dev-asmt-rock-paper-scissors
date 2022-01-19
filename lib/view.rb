@@ -1,32 +1,37 @@
+# require 'pry-byebug'
 # View class to define methods on display, getting input and display errors.
 class View
   # Display array of choices in terminal
-  def display(hash)
+  def display(choices)
     puts '=========================================='
-    hash.count.times do |time|
-      puts "#{hash.keys[time]}. #{hash[time + 1]}"
+    choices.each_with_index do |choice, index|
+      puts "#{index + 1}. #{choice}"
     end
+    print 'Input '
+    choices.each_with_index do |choice, index|
+      print choices.count == (index + 1) ?  "or #{index + 1}" :  "#{index + 1}, "
+    end
+    puts ''
+    puts "=========================================="
   end
 
-  # Display error when choice input is within choices range.
+  # Get user input after display
+  def get_input
+    gets.chomp.to_i
+  end
+
+  # Display error when input is not within available options.
   def display_error(choice, choices)
-    unless choices.keys.include?(choice)
+    unless choices.include?(choice)
+      clear
       puts '=========================================='
       puts "ERROR: #{choice} is not a valid option."
       puts "Please choose one of the following:"
-      choices.count.times do |time|
-        puts "#{choices.keys[time]}. #{choices[time + 1]}"
-      end
     end
   end
+
+  # Method to clear terminal
+  def clear
+    print `clear`
+  end
 end
-
-
-# game_modes = {
-#   1 => 'Player vs PC',
-#   2 => 'PC vs PC',
-#   3 => 'Exit' }
-
-# view = View.new
-# view.display(game_modes)
-# view.display_error(3 ,game_modes)

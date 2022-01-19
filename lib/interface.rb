@@ -1,62 +1,56 @@
-# imports methods from state.rb file
+# imports class from state.rb file
 require_relative 'state'
 
-# imports methods from game.rb file
+# imports class from game.rb file
 require_relative 'game'
+
+# imports class from view.rb file
+require_relative 'view'
 
 class Interface
   def initialize
     # Instantiating a game and state instance
     @game = Game.new
     @state = State.new
+    @view = View.new
+    @game_modes = { 1 => 'Player vs PC',
+                    2 => 'PC vs PC',
+                    3 => 'Exit' }
   end
 
   # Method to prompt user to choose modes
   def choose_mode
     choice = nil
-    until %w[1 2 3].include?(choice)
-      puts '=========================================='
-      puts 'Modes:'
-      # I should be able to play Player vs Computer.
-      puts '1. Player vs PC'
-      # I should be able to play Computer vs Computer.
-      puts '2. PC vs PC'
-      puts '3. Exit'
-      puts 'Input 1, 2 or 3'
-      choice = gets.chomp
-      return choice.to_i if %w[1 2 3].include?(choice)
+    # Loops until 1, 2, or 3 is chosen.
+    until @game_modes.keys.include?(choice)
+      # Display modes to be chosen
+      @view.display(@game_modes.values)
+      # Prompts user to choose mode
+      choice = @view.get_input
 
-      # If input other 1, 2, or 3 is given, clears screen, outputs error msg, and loops.
-      clear
-      puts "Error: input #{choice} was entered. \nPlease try again."
+      # If input other 1, 2, or 3 is given, clears screen, outputs error msg.
+      @view.display_error(choice, @game_modes.keys)
     end
-  end
-
-  # Method to display available choices when playing in Player vs PC
-  def display_choices(choices)
-    clear
-    puts '========================'
-    puts 'Please choose one.'
-    choices.each_with_index do |choice, index|
-      puts "#{index + 1} #{choice}"
-    end
-    print 'Input '
-    choices.count.times do |time|
-      print choices.count == (time + 1) ? "or #{time + 1}" : "#{time + 1}, "
-    end
-  end
-
-  # Method to prompt user to input a choice after displaying availables choices
-  def player_choose(choices)
-    choice = gets.chomp.to_i - 1
-    clear
-    choices[choice]
+    choice
   end
 
   # Method to clear terminal
   def clear
     print `clear`
     # system('clear') || system('cls')
+  end
+
+  # Actual player chooses rock, paper, scissors, lizard or spock.
+  def player_choose(choices)
+    clear
+    choice = nil
+    until choices.include?(choice)
+      @view.display(choices)
+      number_inputted = @view.get_input
+      choice = choices[number_inputted - 1] if number_inputted.positive? && number_inputted <= 5
+      @view.display_error(number_inputted, choices)
+    end
+    choice
   end
 
   # Run game method
@@ -66,16 +60,16 @@ class Interface
 
     # First user prompt to choose a mode
     mode = choose_mode
-    loop_game = [1, 2].include?(mode)
+    loop_game = @game_modes.keys.first(@game_modes.count - 1).include?(mode)
 
     # Clear terminal after mode is chosen
     clear
 
     # Loop to prompt user to choose a mode
     while loop_game
-      # When 1. Player vs PC is chosen. Prompt user to choose rock, paper or scissors.
       choices = @game.rule_set.keys
-      display_choices(choices)
+
+      # When 1. Player vs PC is chosen. Prompt user to choose rock, paper or scissors.
       player_one_choice = player_choose(choices) if mode == 1
 
       # When 2. PC vs PC is chosen. Player one choice is randomly chosen.
@@ -101,5 +95,8 @@ class Interface
   end
 end
 
+# Instantiating new interface instance when ruby lib/interface.rb is run
 interface = Interface.new
+
+# Runs game when ruby lib/interface.rb is run
 interface.run_game
