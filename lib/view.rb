@@ -32,6 +32,6 @@ class View
 
   # Method to clear terminal
   def clear
-    print `clear`
+    system('clear') || system('cls')
   end
 end
