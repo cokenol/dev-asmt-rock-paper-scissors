@@ -2,7 +2,7 @@ require_relative "helper/file_helper.rb"
 
 begin
   require 'state'
-  require 'result'
+  require 'game'
   rescue LoadError
 end
 
@@ -14,44 +14,44 @@ state_helper = FileHelper.new(
 describe "State", if: state_helper.file_and_class_valid? do
 
   let(:state) { State.new }
-  let(:result) { Result.new }
+  let(:game) { Game.new }
 
   describe '#state_of_the_game' do
     it 'should return a choice as string' do
-      expect(state.state_of_the_game('rock', 'paper', 1)).to be_a String
+      expect(state.state_of_the_game('rock', 'paper', 1, game)).to be_a String
     end
 
     it 'should return an interpolated String with player one and two choices' do
-      expect(state.state_of_the_game('rock', 'paper', 1)).to match(/Your choice is rock/i)
-      expect(state.state_of_the_game('rock', 'paper', 1)).to match(/PC choice is paper/i)
+      expect(state.state_of_the_game('rock', 'paper', 1, game)).to match(/Your choice is rock/i)
+      expect(state.state_of_the_game('rock', 'paper', 1, game)).to match(/PC choice is paper/i)
     end
   end
 
   describe '#end_of_the_game' do
     it 'should return as string' do
-      expect(state.end_of_the_game('rock', 'paper', 1, result)).to be_a String
+      expect(state.end_of_the_game('rock', 'paper', 1, game)).to be_a String
     end
 
     it 'should return the correct outcome for rock, paper, scissors' do
-      expect(state.end_of_the_game('rock', 'paper', 1, result)).to match(/You lost!/i)
-      expect(state.end_of_the_game('rock', 'scissors', 1, result)).to match(/You win!/i)
-      expect(state.end_of_the_game('rock', 'rock', 1, result)).to match(/Draw/i)
-      expect(state.end_of_the_game('paper', 'scissors', 1, result)).to match(/You lost!/i)
-      expect(state.end_of_the_game('paper', 'rock', 1, result)).to match(/You win!/i)
-      expect(state.end_of_the_game('paper', 'paper', 1, result)).to match(/Draw/i)
-      expect(state.end_of_the_game('scissors', 'rock', 1, result)).to match(/You lost!/i)
-      expect(state.end_of_the_game('scissors', 'paper', 1, result)).to match(/You win!/i)
-      expect(state.end_of_the_game('scissors', 'scissors', 1, result)).to match(/Draw/i)
+      expect(state.end_of_the_game('rock', 'paper', 1, game)).to match(/You lost!/i)
+      expect(state.end_of_the_game('rock', 'scissors', 1, game)).to match(/You win!/i)
+      expect(state.end_of_the_game('rock', 'rock', 1, game)).to match(/Draw/i)
+      expect(state.end_of_the_game('paper', 'scissors', 1, game)).to match(/You lost!/i)
+      expect(state.end_of_the_game('paper', 'rock', 1, game)).to match(/You win!/i)
+      expect(state.end_of_the_game('paper', 'paper', 1, game)).to match(/Draw/i)
+      expect(state.end_of_the_game('scissors', 'rock', 1, game)).to match(/You lost!/i)
+      expect(state.end_of_the_game('scissors', 'paper', 1, game)).to match(/You win!/i)
+      expect(state.end_of_the_game('scissors', 'scissors', 1, game)).to match(/Draw/i)
     end
 
     it 'should return the correct outcome for rock, paper, scissors, lizard, spock' do
-      expect(state.end_of_the_game('rock', 'lizard', 1, result)).to match(/You win!/i)
-      expect(state.end_of_the_game('scissors', 'rock', 1, result)).to match(/You lost!/i)
-      expect(state.end_of_the_game('paper', 'spock', 1, result)).to match(/You win!/i)
-      expect(state.end_of_the_game('lizard', 'scissors', 1, result)).to match(/You lost!/i)
-      expect(state.end_of_the_game('lizard', 'spock', 1, result)).to match(/You win!/i)
-      expect(state.end_of_the_game('scissors', 'spock', 1, result)).to match(/You lost!/i)
-      expect(state.end_of_the_game('spock', 'rock', 1, result)).to match(/You win!/i)
+      expect(state.end_of_the_game('rock', 'lizard', 1, game)).to match(/You win!/i)
+      expect(state.end_of_the_game('scissors', 'rock', 1, game)).to match(/You lost!/i)
+      expect(state.end_of_the_game('paper', 'spock', 1, game)).to match(/You win!/i)
+      expect(state.end_of_the_game('lizard', 'scissors', 1, game)).to match(/You lost!/i)
+      expect(state.end_of_the_game('lizard', 'spock', 1, game)).to match(/You win!/i)
+      expect(state.end_of_the_game('scissors', 'spock', 1, game)).to match(/You lost!/i)
+      expect(state.end_of_the_game('spock', 'rock', 1, game)).to match(/You win!/i)
     end
   end
 end
