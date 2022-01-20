@@ -1,8 +1,18 @@
 require 'interface'
 require 'pry-byebug'
 
-RSpec.describe Interface do
+RSpec.configure do |config|
+   # Use color in STDOUT
+  config.color = true
 
+  # Use color not only in STDOUT but also in pagers and files
+  config.tty = true
+
+  # Use the specified formatter
+  config.formatter = :documentation
+end
+
+RSpec.describe Interface do
   describe '#choose_mode' do
     it 'sends a prompt of Player vs PC mode to choose' do
       output = StringIO.new
@@ -50,5 +60,54 @@ RSpec.describe Interface do
     #   console_interface.choose_mode
     #   expect(output.string).to include('not a valid option')
     # end
+  end
+
+  describe '#player_choose' do
+    choices = %i[rock paper scissors lizard spock]
+
+    it 'should display rock as a choice in terminal' do
+      output = StringIO.new
+      $stdout = output
+      $stdin = StringIO.new("1\n")
+      console_interface = Interface.new(output: output)
+      console_interface.player_choose(choices)
+      expect(output.string).to include('rock')
+    end
+
+    it 'should display paper as a choice in terminal' do
+      output = StringIO.new
+      $stdout = output
+      $stdin = StringIO.new("1\n")
+      console_interface = Interface.new(output: output)
+      console_interface.player_choose(choices)
+      expect(output.string).to include('paper')
+    end
+
+    it 'should display scissors as a choice in terminal' do
+      output = StringIO.new
+      $stdout = output
+      $stdin = StringIO.new("1\n")
+      console_interface = Interface.new(output: output)
+      console_interface.player_choose(choices)
+      expect(output.string).to include('scissors')
+    end
+
+    it 'should display lizard as a choice in terminal' do
+      output = StringIO.new
+      $stdout = output
+      $stdin = StringIO.new("1\n")
+      console_interface = Interface.new(output: output)
+      console_interface.player_choose(choices)
+      expect(output.string).to include('lizard')
+    end
+
+    it 'should display spock as a choice in terminal' do
+      output = StringIO.new
+      $stdout = output
+      $stdin = StringIO.new("1\n")
+      console_interface = Interface.new(output: output)
+      console_interface.player_choose(choices)
+      expect(output.string).to include('spock')
+    end
   end
 end

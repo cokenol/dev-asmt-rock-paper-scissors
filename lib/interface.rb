@@ -27,13 +27,11 @@ class Interface
     # Loops until 1, 2, or 3 is chosen.
     until @game_modes.keys.include?(choice)
       # Display modes to be chosen
-      @output = @view.display(@game_modes.values)
-      # binding.pry
+      @view.display(@game_modes.values)
       # Prompts user to choose mode
       choice = @view.get_input
-      @input = choice
       # If input other 1, 2, or 3 is given, clears screen, outputs error msg.
-      @output = @view.display_error(choice, @game_modes.keys)
+      @view.display_error(choice, @game_modes.keys)
     end
     choice
   end
