@@ -26,7 +26,7 @@ class View
       clear
       puts '=========================================='
       puts "ERROR: #{choice} is not a valid option."
-      puts "Please choose one of the following:"
+      puts 'Please choose one of the following:'
     end
   end
 
