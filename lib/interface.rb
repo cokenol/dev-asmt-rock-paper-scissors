@@ -6,7 +6,6 @@ require_relative 'game'
 
 # imports class from view.rb file
 require_relative 'view'
-require 'pry-byebug'
 
 class Interface
   def initialize(input: $stdin, output: $stdout)
