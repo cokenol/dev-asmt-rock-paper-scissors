@@ -23,7 +23,7 @@ class View
   # Display error when input is not within available options.
   def display_error(choice, choices)
     unless choices.include?(choice)
-      # clear
+      clear
       puts '=========================================='
       puts "ERROR: #{choice} is not a valid option."
       puts 'Please choose one of the following:'
