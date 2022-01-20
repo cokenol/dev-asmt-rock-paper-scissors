@@ -9,10 +9,10 @@ class View
     end
     print 'Input '
     choices.each_with_index do |choice, index|
-      print choices.count == (index + 1) ?  "or #{index + 1}" :  "#{index + 1}, "
+      print choices.count == (index + 1) ? "or #{index + 1}" : "#{index + 1}, "
     end
     puts ''
-    puts "=========================================="
+    puts '=========================================='
   end
 
   # Get user input after display
