@@ -108,5 +108,15 @@ RSpec.describe Interface do
       console_interface.player_choose(choices)
       expect(output.string).to include('spock')
     end
+
+    it 'should have an input for choosing choices' do
+      output = StringIO.new
+      $stdout = output
+      input = StringIO.new("1\n")
+      $stdin = input
+      console_interface = Interface.new(input: input, output: output)
+      console_interface.player_choose(choices)
+      expect(input.string).to include("1\n")
+    end
   end
 end
