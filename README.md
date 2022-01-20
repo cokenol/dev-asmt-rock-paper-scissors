@@ -65,11 +65,13 @@ This is a take home coding assignment to build a command line game of rock, pape
 ## Execution Instructions
 ### Test
   Run the tests and view its results
-  `rspec` 
+  
+  ```rspec``` 
 
 ### Run the game
   Start the command line game
-  `ruby lib/app.rb` 
+  
+  ```ruby lib/app.rb```
 
 
 
