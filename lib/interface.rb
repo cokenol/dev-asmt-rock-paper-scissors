@@ -33,7 +33,7 @@ class Interface
       choice = @view.get_input
       @input = choice
       # If input other 1, 2, or 3 is given, clears screen, outputs error msg.
-      @view.display_error(choice, @game_modes.keys)
+      @output = @view.display_error(choice, @game_modes.keys)
     end
     choice
   end
