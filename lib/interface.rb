@@ -6,10 +6,13 @@ require_relative 'game'
 
 # imports class from view.rb file
 require_relative 'view'
+require 'pry-byebug'
 
 class Interface
-  def initialize
+  def initialize(input: $stdin, output: $stdout)
     # Instantiating a game and state instance
+    @input = input
+    @output = output
     @game = Game.new
     @state = State.new
     @view = View.new
@@ -24,10 +27,11 @@ class Interface
     # Loops until 1, 2, or 3 is chosen.
     until @game_modes.keys.include?(choice)
       # Display modes to be chosen
-      @view.display(@game_modes.values)
+      @output = @view.display(@game_modes.values)
+      # binding.pry
       # Prompts user to choose mode
       choice = @view.get_input
-
+      @input = choice
       # If input other 1, 2, or 3 is given, clears screen, outputs error msg.
       @view.display_error(choice, @game_modes.keys)
     end
@@ -96,7 +100,7 @@ class Interface
 end
 
 # Instantiating new interface instance when ruby lib/interface.rb is run
-interface = Interface.new
+# interface = Interface.new
 
-# Runs game when ruby lib/interface.rb is run
-interface.run_game
+# # Runs game when ruby lib/interface.rb is run
+# interface.run_game
