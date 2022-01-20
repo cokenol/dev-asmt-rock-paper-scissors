@@ -43,7 +43,7 @@ class Interface
 
   # Actual player chooses rock, paper, scissors, lizard or spock.
   def player_choose(choices)
-    clear
+    # clear
     choice = nil
     until choices.include?(choice)
       @view.display(choices)
