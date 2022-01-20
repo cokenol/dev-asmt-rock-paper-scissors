@@ -64,10 +64,12 @@ This is a take home coding assignment to build a command line game of rock, pape
 <!-- Execution Instructions -->
 ## Execution Instructions
 ### Test
-  `rspec spec --format documentation` in the terminal to run the tests written and its results
+  Run the tests and view its results
+  `rspec` 
 
 ### Run the game
-  `ruby lib/interface.rb` in the terminal to start the command line game
+  Start the command line game
+  `ruby lib/app.rb` 
 
 
 
