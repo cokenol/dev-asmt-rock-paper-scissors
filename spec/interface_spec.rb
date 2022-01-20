@@ -36,8 +36,17 @@ RSpec.describe Interface do
       $stdin = input
       console_interface = Interface.new(input: input)
       console_interface.choose_mode
-
       expect(input.string).to include("1\n")
+    end
+
+    it 'sends a prompt of error when wrong input is given' do
+      output = StringIO.new
+      $stdout = output
+      input = StringIO.new("4\n")
+      $stdin = input
+      console_interface = Interface.new(input: input, output: output)
+      console_interface.choose_mode
+      expect(output.string).to include('not a valid option')
     end
   end
 end
