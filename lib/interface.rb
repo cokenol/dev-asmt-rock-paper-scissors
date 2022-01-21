@@ -28,7 +28,7 @@ class Interface
       # Display modes to be chosen
       @view.display(@game_modes.values)
       # Prompts user to choose mode
-      choice = @view.get_input
+      choice = @view.ask_input
       # If input other 1, 2, or 3 is given, clears screen, outputs error msg.
       @view.display_error(choice, @game_modes.keys)
     end
@@ -47,11 +47,11 @@ class Interface
     choice = nil
     until choices.include?(choice)
       @view.display(choices)
-      number_inputted = @view.get_input
+      number_inputted = @view.ask_input
       choice = choices[number_inputted - 1] if number_inputted.positive? && number_inputted <= 5
       @view.display_error(number_inputted, choices)
     end
-    choice
+    choice.to_s
   end
 
   # Run game method
