@@ -1,3 +1,4 @@
+# require 'pry-byebug'
 # View class to define methods on display, getting input and display errors.
 class View
   # Display array of choices in terminal
@@ -21,9 +22,12 @@ class View
 
   # Display error when input is not within available options.
   def display_error(choice, choices)
+    # binding.pry
     return '' if choices.include?(choice)
 
     clear
+    puts "#{choice}, #{choices}"
+    puts "#{choice.class}, #{choices.first.class}"
     puts '=========================================='
     puts "ERROR: #{choice} is not a valid option."
     puts 'Please choose one of the following:'

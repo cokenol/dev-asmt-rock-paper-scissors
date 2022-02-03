@@ -13,6 +13,9 @@ class State
     when 2
       player_one = 'PC#1 choice'
       player_two = 'PC#2 choice'
+    when 3
+      player_one = 'Player 1 choice'
+      player_two = 'Player 2 choice'
     end
     "#{player_one} is #{game.choice_emoji(player_one_choice)}.\n#{player_two} is #{game.choice_emoji(player_two_choice)}."
   end
@@ -24,6 +27,8 @@ class State
       player_one = 'You'
     when 2
       player_one = 'PC#1'
+    when 3
+      player_one = 'Player 1'
     end
     "#{player_one} #{result.outcome(player_one_choice, player_two_choice)}!"
   end

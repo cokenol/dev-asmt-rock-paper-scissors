@@ -1,7 +1,16 @@
 # Ruleset and outcome methods are defined here
 class Game
-  # Rule set of the game is defined here
-  def rule_set
+  # Basic Rule set of the game is defined here
+  def rule_set_basic
+    {
+      rock: %i[scissors],
+      paper: %i[rock],
+      scissors: %i[paper]
+    }
+  end
+
+  # Extended rule set of the game
+  def rule_set_extended
     {
       rock: %i[scissors lizard],
       paper: %i[rock spock],
@@ -27,7 +36,7 @@ class Game
   def outcome(player_one_choice, player_two_choice)
     if player_one_choice == player_two_choice
       'draw'
-    elsif rule_set[player_one_choice.to_sym].include?(player_two_choice.to_sym)
+    elsif rule_set_extended[player_one_choice.to_sym].include?(player_two_choice.to_sym)
       'win'
     else
       'lost'
